@@ -22,5 +22,23 @@ public class Main {
         CSVWriter.writeLargeFile(flatJson, ";", "test.csv", header);
         BasicConfigurator.configure();
     }
-    
+
+    private static String jsonString() {
+        return  "[" +
+                "    {" +
+                "        \"studentName\": \"Foo\"," +
+                "        \"Age\": \"12\"," +
+                "        \"subjects\": [" +
+                "            {" +
+                "                \"name\": \"English\"," +
+                "                \"marks\": \"40\"" +
+                "            }," +
+                "            {" +
+                "                \"name\": \"History\"," +
+                "                \"marks\": \"50\"" +
+                "            }" +
+                "        ]" +
+                "    }" +
+                "]";
+    }
 }
