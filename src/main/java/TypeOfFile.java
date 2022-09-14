@@ -50,10 +50,13 @@ public class TypeOfFile {
             case "csv":
                 switch (extensionConverted) {
                     case "json": {
-
+                        CsvToJson csvtojson = new CsvToJson(pathConverting, pathConverted);
+                        csvtojson.converterCsvToJson();
                         break;
                     }
                     case "txt": {
+                        CsvToXml csvtoxml = new CsvToXml(pathConverting, pathConverted);
+                        csvtoxml.converterCsvToXml();
                         break;
                     }
                     default:
