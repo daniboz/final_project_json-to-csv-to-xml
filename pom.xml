@@ -20,28 +20,18 @@
     </properties>
 
     <dependencies>
-        <!-- JSON.org -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${org.json.version}</version>
-        </dependency>
-
-        <!-- APACHE COMMONS LANG -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang.version}</version>
         </dependency>
 
-        <!-- APACHE COMMONS IO -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons.io.version}</version>
         </dependency>
 
-        <!-- LOG4J -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class JsonToXml {
+public class JsonToXml implements IConverters {
 
     String pathJson;
     String pathXml;
@@ -18,7 +18,8 @@ public class JsonToXml {
         this.pathXml = pathXml;
     }
 
-    public void converterJsonToXml()
+    @Override
+    public void converter()
     {
 
     String result;
@@ -35,9 +36,6 @@ public class JsonToXml {
         // use write() method of File to write XML data into XMLData.txt
         file.write(xml);
         file.flush();
-        System.out.println("Your XML data is successfully written in the converted file");
-
-        // close FileWriter
         file.close();
 
     } catch (
@@ -53,15 +51,13 @@ public class JsonToXml {
             JSONObject jsonObject = new JSONObject(jsonString);
 
             // use XML.toString() method to convert JSON into XML and store the result into a string
-            String xml = "<"+root+">" + XML.toString(jsonObject) + "</"+root+">";
-            return xml;
+            return "<"+root+">" + XML.toString(jsonObject) + "</"+root+">";
 
         } catch (JSONException e) {
             JSONArray jsonArray = new JSONArray(jsonString);
 
             // use XML.toString() method to convert JSON into XML and store the result into a string
-            String xml = root + ">" + XML.toString(jsonArray) + "</" + root + ">";
-            return xml;
+            return "<"+ root + ">" + XML.toString(jsonArray) + "</" + root + ">";
         }
     }
 }

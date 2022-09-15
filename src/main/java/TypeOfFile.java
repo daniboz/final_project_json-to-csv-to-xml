@@ -3,69 +3,32 @@ import com.google.common.io.Files;
 public class TypeOfFile {
     String pathConverting;
     String pathConverted;
-    String extension;
+    String extensionConverting;
     String extensionConverted;
 
     public TypeOfFile(String pathConverting,String pathConverted) {
         this.pathConverting = pathConverting;
         this.pathConverted = pathConverted;
-        this.extension= Files.getFileExtension(pathConverting);
+        this.extensionConverting = Files.getFileExtension(pathConverting);
         this.extensionConverted= Files.getFileExtension(pathConverted);
     }
 
     public void cases ()
     {
-        switch (extension)
-        {
-            case "json":
-                switch (extensionConverted) {
-                    case "txt": {
-                        JsonToXml jsontoxml = new JsonToXml(pathConverting, pathConverted);
-                        jsontoxml.converterJsonToXml();
-                        break;
-                    }
-                    case "csv": {
-                        JsonToCsv jsontocsv = new JsonToCsv(pathConverting, pathConverted);
-                        jsontocsv.converterJsonToCsv();
-                        break;
-                    }
-                    default:
-                        System.out.println("Incorrect path of converted file");
-                }
-                break;
-            case "txt":
-                switch (extensionConverted) {
-                    case "json": {
-                        XmlToJson xmltojson = new XmlToJson(pathConverting, pathConverted);
-                        xmltojson.converterXmlToJson();
-                        break;
-                    }
-                    case "csv": {
-                        break;
-                    }
-                    default:
-                        System.out.println("Incorrect path of converted file");
-                }
-                break;
-            case "csv":
-                switch (extensionConverted) {
-                    case "json": {
-                        CsvToJson csvtojson = new CsvToJson(pathConverting, pathConverted);
-                        csvtojson.converterCsvToJson();
-                        break;
-                    }
-                    case "txt": {
-                        CsvToXml csvtoxml = new CsvToXml(pathConverting, pathConverted);
-                        csvtoxml.converterCsvToXml();
-                        break;
-                    }
-                    default:
-                        System.out.println("Incorrect path of converted file");
-                }
-                break;
-
-            default:
-                System.out.println("Incorrect path of converting file");
+        switch (extensionConverting) {
+            case "json" -> {
+                ExtensionConvertingCases jsonCase = new ExtensionConvertingCases(pathConverting, pathConverted);
+                jsonCase.JsonCase();
+            }
+            case "txt" -> {
+                ExtensionConvertingCases xmlCase = new ExtensionConvertingCases(pathConverting, pathConverted);
+                xmlCase.XmlCase();
+            }
+            case "csv" -> {
+                ExtensionConvertingCases csvCase = new ExtensionConvertingCases(pathConverting, pathConverted);
+                csvCase.CsvCase();
+            }
+            default -> System.out.println("Incorrect path of converting file");
         }
     }
 }

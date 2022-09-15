@@ -18,7 +18,7 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.dataformat.csv.*;
 
-public class CsvToJson {
+public class CsvToJson implements  IConverters{
 
         String pathCsv;
         String pathJson;
@@ -28,7 +28,7 @@ public class CsvToJson {
         this.pathJson = pathJson;
     }
 
-    public void converterCsvToJson() {
+    public void converter() {
 
         File input = new File(pathCsv);
         try {

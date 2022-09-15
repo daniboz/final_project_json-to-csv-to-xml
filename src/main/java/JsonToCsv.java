@@ -1,3 +1,4 @@
+
 import test.CSVWriter;
 import test.JSONFlattener;
 
@@ -6,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class JsonToCsv {
+public class JsonToCsv implements IConverters {
 
     List<Map<String, String>> flatJson;
     String pathJson;
@@ -17,7 +18,8 @@ public class JsonToCsv {
         this.pathCsv= pathCsv;
     }
 
-    public void converterJsonToCsv ()
+    @Override
+    public void converter()
     {
 
         flatJson = JSONFlattener.parseJson(new File(pathJson), "UTF-8");
@@ -26,5 +28,6 @@ public class JsonToCsv {
 
         CSVWriter.writeLargeFile(flatJson, ";", pathCsv, header);
     }
+
 
 }

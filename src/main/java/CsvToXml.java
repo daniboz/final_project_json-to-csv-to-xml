@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-public class CsvToXml {
+public class CsvToXml implements  IConverters{
 
             String pathCsv;
             String pathXml;
@@ -18,7 +18,8 @@ public class CsvToXml {
             this.pathXml = pathXml;
         }
 
-        public void converterCsvToXml()
+        @Override
+        public void converter()
             {
 
             try {
@@ -30,7 +31,7 @@ public class CsvToXml {
                 List out = new ArrayList();
 
                 while((line = reader.readNext())!=null){
-                    List<String[]> item = new ArrayList<String[]>();
+                    List<String[]> item = new ArrayList<>();
                     for (int i = 0; i < header.length; i++) {
                         String[] keyVal = new String[2];
                         String string = header[i];

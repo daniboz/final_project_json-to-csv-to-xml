@@ -7,26 +7,28 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class XmlToJson {
+public class XmlToJson implements IConverters{
 
-    String pathXml;
-    String pathJson;
+    String pathConverting;
+    String pathConverted;
+  //  public static String jsonStr;
 
-    public XmlToJson(String pathXml, String pathJson) {
-        this.pathXml = pathXml;
-        this.pathJson = pathJson;
+    public XmlToJson(String pathConverting, String pathConverted) {
+        this.pathConverting = pathConverting;
+        this.pathConverted = pathConverted;
     }
 
-    public void converterXmlToJson()
+    @Override
+    public void converter()
     {
     String result;
         try {
-        result= new String(Files.readAllBytes(Paths.get(pathXml)));
+        result= new String(Files.readAllBytes(Paths.get(pathConverting)));
         String json= convertToJSON(result);
-        FileWriter file = new FileWriter(pathJson);
+    //    jsonStr=json;
+        FileWriter file = new FileWriter(pathConverted);
         file.write(json);
         file.flush();
-        System.out.println("Your JSON data is successfully written in the converted file");
         file.close();
     } catch (IOException e1) {
         // TODO Auto-generated catch block
@@ -49,4 +51,5 @@ public class XmlToJson {
         // pass the JSON data to the main() method
         return jsonString;
     }
+
 }
