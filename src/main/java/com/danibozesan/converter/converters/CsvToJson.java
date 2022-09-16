@@ -1,4 +1,4 @@
-//import org.json.CDL;
+package com.danibozesan.converter.converters;//import org.json.CDL;
 //
 //import java.io.BufferedReader;
 //import java.io.IOException;
@@ -11,41 +11,46 @@
 //import java.util.stream.Collectors;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+import com.danibozesan.converter.IConverters;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.dataformat.csv.*;
 
-public class CsvToJson implements  IConverters{
+import static com.danibozesan.converter.Constants.CSV;
+import static com.danibozesan.converter.Constants.JSON;
 
-        String pathCsv;
-        String pathJson;
+public class CsvToJson implements IConverters {
 
-    public CsvToJson(String pathCsv, String pathJson) {
-        this.pathCsv = pathCsv;
-        this.pathJson = pathJson;
-    }
-
-    public void converter() {
-
-        File input = new File(pathCsv);
+    @Override
+    public void convert(Path source, Path target) {
         try {
             CsvSchema csv = CsvSchema.emptySchema().withHeader();
             CsvMapper csvMapper = new CsvMapper();
-            MappingIterator<Map<?, ?>> mappingIterator =  csvMapper.reader().forType(Map.class).with(csv).readValues(input);
+            MappingIterator<Map<?, ?>> mappingIterator = csvMapper.reader().forType(Map.class).with(csv).readValues(source.toFile());
             List<Map<?, ?>> list = mappingIterator.readAll();
             //csvMapper.writeValue(Paths.get(pathJson).toFile(),list);
             ObjectMapper mapper = new ObjectMapper();
             ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 
             // convert book object to JSON file
-            writer.writeValue(Paths.get(pathJson).toFile(), list);
-           // System.out.println(list);
-        } catch(Exception e) {
+            writer.writeValue(target.toFile(), list);
+            // System.out.println(list);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    @Override
+    public String getSource() {
+        return CSV;
+    }
+
+    @Override
+    public String getTarget() {
+        return JSON;
+    }
 }
