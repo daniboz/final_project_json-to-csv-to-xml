@@ -1,7 +1,10 @@
+package ro.daniboz.universalconverter.converters;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
+import ro.daniboz.universalconverter.IConverters;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,7 +22,7 @@ public class JsonToXml implements IConverters {
     }
 
     @Override
-    public void converter()
+    public void convert()
     {
 
     String result;

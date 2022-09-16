@@ -1,3 +1,7 @@
+package ro.daniboz.universalconverter;
+
+import ro.daniboz.universalconverter.converters.*;
+
 import java.util.Scanner;
 
 public class ExtensionConvertedCases extends ExtensionConvertingCases{
@@ -9,34 +13,34 @@ public class ExtensionConvertedCases extends ExtensionConvertingCases{
     public void JsonToXmlCase()
     {
         JsonToXml jsontoxml = new JsonToXml(pathConverting, pathConverted);
-        jsontoxml.converter();
+        jsontoxml.convert();
         System.out.println("your data is succesfully converted from JSON to XML");
     }
 
     public void JsonToCsvCase()
     {
         JsonToCsv jsontocsv = new JsonToCsv(pathConverting, pathConverted);
-        jsontocsv.converter();
+        jsontocsv.convert();
         System.out.println("your data is succesfully converted from JSON to CSV");
     }
 
     public void JsonToCsvCase(String pathAuxiliar)
     {
         JsonToCsv jsontocsv = new JsonToCsv(pathAuxiliar, pathConverted);
-        jsontocsv.converter();
+        jsontocsv.convert();
     }
 
     public void XmlToJsonCase()
     {
         XmlToJson xmltojson = new XmlToJson(pathConverting, pathConverted);
-        xmltojson.converter();
+        xmltojson.convert();
         System.out.println("your data is succesfully converted from XML to JSON");
     }
 
     public void XmlToJsonCase(String pathAuxiliar)
     {
         XmlToJson xmltojson = new XmlToJson(pathConverting, pathAuxiliar);
-        xmltojson.converter();
+        xmltojson.convert();
     }
 
     public void XmlToCsvCase()
@@ -50,14 +54,14 @@ public class ExtensionConvertedCases extends ExtensionConvertingCases{
     public void CsvToJsonCase()
     {
         CsvToJson csvtojson = new CsvToJson(pathConverting, pathConverted);
-        csvtojson.converter();
+        csvtojson.convert();
         System.out.println("your data is succesfully converted from CSV to JSON");
     }
 
     public void CsvToXmlCase()
     {
         CsvToXml csvtoxml = new CsvToXml(pathConverting, pathConverted);
-        csvtoxml.converter();
+        csvtoxml.convert();
         System.out.println("your data is succesfully converted from CSV to XML");
     }
 

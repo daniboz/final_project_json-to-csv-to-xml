@@ -1,3 +1,5 @@
+package ro.daniboz.universalconverter;
+
 public class ExtensionConvertingCases extends TypeOfFile{
 
     public ExtensionConvertingCases(String pathConverting, String pathConverted) {

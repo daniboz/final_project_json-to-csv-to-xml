@@ -1,4 +1,4 @@
-package test;/*
+package ro.daniboz.universalconverter.utils;/*
  * Copyright 2012-2014 Dristhi software
  * Copyright 2015 Arkni Brahim
  *
@@ -73,7 +73,7 @@ public class CSVWriter {
         try {
             FileUtils.write(new File(fileName), csvString);
         } catch (IOException e) {
-            LOGGER.error("test.CSVWriter#writeToFile(csvString, fileName) IOException: ", e);
+            LOGGER.error("ro.daniboz.universalconverter.utils.CSVWriter#writeToFile(csvString, fileName) IOException: ", e);
         }
     }
     
@@ -100,7 +100,7 @@ public class CSVWriter {
             	Files.write(Paths.get(fileName), csvString.getBytes("ISO8859_1"), StandardOpenOption.APPEND);
             }            
         } catch (IOException e) {
-            LOGGER.error("test.CSVWriter#writeLargeFile(flatJson, separator, fileName, headers) IOException: ", e);
+            LOGGER.error("ro.daniboz.universalconverter.utils.CSVWriter#writeLargeFile(flatJson, separator, fileName, headers) IOException: ", e);
         }
     }    
 

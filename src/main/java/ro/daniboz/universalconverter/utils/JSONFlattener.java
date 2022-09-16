@@ -1,4 +1,4 @@
-package test;/*
+package ro.daniboz.universalconverter.utils;/*
  * Copyright 2012-2014 Dristhi software
  * Copyright 2015 Arkni Brahim
  *

@@ -1,13 +1,16 @@
+package ro.daniboz.universalconverter.converters;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
+import ro.daniboz.universalconverter.IConverters;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class XmlToJson implements IConverters{
+public class XmlToJson implements IConverters {
 
     String pathConverting;
     String pathConverted;
@@ -19,7 +22,7 @@ public class XmlToJson implements IConverters{
     }
 
     @Override
-    public void converter()
+    public void convert()
     {
     String result;
         try {

@@ -1,5 +1,8 @@
+package ro.daniboz.universalconverter.converters;
+
 import com.opencsv.CSVReader;
 import com.thoughtworks.xstream.XStream;
+import ro.daniboz.universalconverter.IConverters;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -8,7 +11,7 @@ import java.util.List;
 
 
 
-public class CsvToXml implements  IConverters{
+public class CsvToXml implements IConverters {
 
             String pathCsv;
             String pathXml;
@@ -19,7 +22,7 @@ public class CsvToXml implements  IConverters{
         }
 
         @Override
-        public void converter()
+        public void convert()
             {
 
             try {

@@ -1,3 +1,5 @@
+package ro.daniboz.universalconverter;
+
 import com.google.common.io.Files;
 
 public class TypeOfFile {

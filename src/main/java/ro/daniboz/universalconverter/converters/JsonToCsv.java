@@ -1,6 +1,8 @@
+package ro.daniboz.universalconverter.converters;
 
-import test.CSVWriter;
-import test.JSONFlattener;
+import ro.daniboz.universalconverter.IConverters;
+import ro.daniboz.universalconverter.utils.CSVWriter;
+import ro.daniboz.universalconverter.utils.JSONFlattener;
 
 import java.io.File;
 import java.util.List;
@@ -19,7 +21,7 @@ public class JsonToCsv implements IConverters {
     }
 
     @Override
-    public void converter()
+    public void convert()
     {
 
         flatJson = JSONFlattener.parseJson(new File(pathJson), "UTF-8");
