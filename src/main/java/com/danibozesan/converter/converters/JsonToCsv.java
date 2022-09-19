@@ -1,29 +1,49 @@
 package com.danibozesan.converter.converters;
 
 import com.danibozesan.converter.IConverters;
-import com.danibozesan.converter.utilities.CSVWriter;
-import com.danibozesan.converter.utilities.JSONFlattener;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import static com.danibozesan.converter.Constants.CSV;
 import static com.danibozesan.converter.Constants.JSON;
 
 public class JsonToCsv implements IConverters {
 
-    List<Map<String, String>> flatJson;
+   JsonNode jsonTree;
+
 
     @Override
     public void convert(Path source, Path target) {
-        flatJson = JSONFlattener.parseJson(new File(source.toFile().toURI()), "UTF-8");
 
-        Set<String> header = CSVWriter.collectOrderedHeaders(flatJson);
+        {
+            try {
+                jsonTree = new ObjectMapper().readTree(new File(source.toUri()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
-        CSVWriter.writeLargeFile(flatJson, ";", String.valueOf(target), header);
+        CsvSchema.Builder csvSchemaBuilder = CsvSchema.builder();
+        JsonNode firstObject = jsonTree.elements().next();
+        firstObject.fieldNames().forEachRemaining(fieldName -> {csvSchemaBuilder.addColumn(fieldName);} );
+        CsvSchema csvSchema = csvSchemaBuilder.build().withHeader();
+
+        CsvMapper csvMapper = new CsvMapper();
+        try {
+            csvMapper.writerFor(JsonNode.class)
+                    .with(csvSchema)
+                    .writeValue(new File(target.toUri()), jsonTree);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     @Override

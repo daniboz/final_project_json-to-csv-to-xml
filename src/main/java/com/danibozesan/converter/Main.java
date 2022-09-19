@@ -26,16 +26,12 @@ public class Main {
         String sourceExtension = Files.getFileExtension(source);
         String targetExtension = Files.getFileExtension(target);
 
-        List<IConverters> allConverters = Arrays.asList(new JsonToCsv(),new JsonToXml(),new CsvToJson(), new CsvToXml(), new XmlToJson() ,new XmlToCsv());
+        List<IConverters> allConverters = Arrays.asList(new JsonToCsv(),new JsonToXml(),new CsvToJson(), new CsvToXml(), new XmlToJson() ,new XmlToCsv(), new YamlToJson(), new JsonToYaml());
 
         for (IConverters converter : allConverters) {
             if(converter.getSource().equals(sourceExtension) && converter.getTarget().equals(targetExtension))
                converter.convert(sourcePath,targetPath);
         }
-
-//        com.danibozesan.converter.TypeOfFile casesOfFile = new com.danibozesan.converter.TypeOfFile(pathConverting,pathConverted);
-//        casesOfFile.casesOfFiles();
-
 
 
 //        C:\\Users\\Dani\\Desktop\\tasks_hibyte\\json-to-csv-to-xml\\TASK\\test.json
