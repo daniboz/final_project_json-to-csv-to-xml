@@ -33,7 +33,6 @@ public class Main {
                converter.convert(sourcePath,targetPath);
         }
 
-
 //        C:\\Users\\Dani\\Desktop\\tasks_hibyte\\json-to-csv-to-xml\\TASK\\test.json
 //        C:\\Users\\Dani\\Desktop\\test1.json
 //        C:\\Users\\Dani\\Desktop\\testxml.txt

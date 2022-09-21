@@ -24,7 +24,7 @@ public class YamlToJson implements IConverters {
 
             ObjectMapper mapper = new ObjectMapper();
             ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-            writer.writeValue(target.toFile(), jsonWriter.writeValueAsString(obj));
+            writer.writeValue(target.toFile(), jsonWriter.writeValueAsString(obj).replace("\""," "));
         } catch (JsonProcessingException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
